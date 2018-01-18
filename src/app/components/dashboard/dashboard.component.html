@@ -1,0 +1,103 @@
+<div class="sidebar">
+  
+    <mat-sidenav-container>
+        <mat-toolbar  role="toolbar" color="primary" fxLayout="row" class="dashoardToolbar">
+            <button mat-icon-button (click)="sidenav.toggle()" fxHide="false" fxHide.gt-sm>
+              <mat-icon >menu</mat-icon>
+            </button>
+            <button mat-icon-button (click)="sidenav.toggle()" *ngIf="media.isActive('gt-sm')">
+              <mat-icon matTooltip="Close" *ngIf="sidenav.opened ? true : false">arrow_back</mat-icon>
+              <mat-icon matTooltip="Open" *ngIf="sidenav.opened ? false : true">arrow_forward</mat-icon>
+            </button>
+
+            <div *ngFor="let item of MenuList">
+                <div>
+                    <button *ngIf="item.children != null" [matMenuTriggerFor]="subMenu1" mat-button>
+                      {{item.title}} <i class="material-icons">keyboard_arrow_down</i>
+                    </button>
+                    <button *ngIf="item.children == null" mat-button>
+                      {{item.title}}
+                    </button>
+                </div>
+                <mat-menu #subMenu1="matMenu" [overlapTrigger]="false">
+                  <div *ngFor="let child of item.children">
+                    <button *ngIf="child.children != null" [matMenuTriggerFor]="subMenu2"  mat-menu-item>
+                      <mat-icon>account_circle</mat-icon>
+                      <span>{{child.title}}</span>
+                    </button>
+                    <button *ngIf="child.children == null" mat-menu-item>
+                      <mat-icon>account_circle</mat-icon>
+                      <span>{{child.title}}</span>
+                    </button>
+                    <mat-menu #subMenu2="matMenu" [overlapTrigger]="false">
+                      <div *ngFor="let subChild of child.children">
+                        <button *ngIf="subChild.children != null" [matMenuTriggerFor]="subMenu3" mat-menu-item>
+                          <mat-icon>account_circle</mat-icon>
+                          <span>{{subChild.title}}</span>
+                        </button>
+                        <button *ngIf="subChild.children == null" mat-menu-item>
+                          <mat-icon>account_circle</mat-icon>
+                          <span>{{subChild.title}}</span>
+                        </button>
+                        <mat-menu #subMenu3="matMenu" [overlapTrigger]="false">
+                          <button *ngFor="let sub3 of subChild.children" mat-menu-item>
+                            <mat-icon>account_circle</mat-icon>
+                            <span>{{sub3.title}}</span>
+                          </button>
+                        </mat-menu>
+                      </div>
+                    </mat-menu>
+                  </div>
+                </mat-menu>
+            </div>
+            <span fxFlex></span>
+            <div style="margin-right: 10px !important">
+              <a *ngIf="auth.checkLogged()" class="name" [matMenuTriggerFor]="menu">
+                <img src="assets/img/logo.png" style="height: 45px; width:45px" class="img-circle image-border" alt="">
+              </a>
+  
+              <mat-menu #menu="matMenu" [overlapTrigger]="false" class="my-menu menu">
+                <!-- <div style="color: red !important" class="menu-username">
+  
+                </div> -->
+                <div color="accent" class="menu-username">
+                  <div fxLayout="column" fxLayoutAlign="start start">
+                    <div class="name">{{auth.getLoggedUsername()}}</div>
+                    <div class="userMail">{{auth.getLoggedEmail()}}</div>
+                  </div>
+                </div>
+                <mat-list>
+                  <mat-divider></mat-divider>
+                </mat-list>
+                <button mat-menu-item>
+                  <mat-icon>account_circle</mat-icon>
+                  <span>Change Profile</span>
+                </button>
+                <button mat-menu-item routerLink="/mypage/Change-Password">
+                  <mat-icon>lock</mat-icon>
+                  <span>Change Password</span>
+                </button>
+                <button mat-menu-item routerLink="/productList">
+                  <mat-icon>build</mat-icon>
+                  <span>Settings</span>
+                </button>
+                <mat-list>
+                  <mat-divider></mat-divider>
+                </mat-list>
+                <button mat-menu-item (click)="Logout()">
+                  <mat-icon>subdirectory_arrow_right</mat-icon>
+                  <span>Sign Out</span>
+                </button>
+              </mat-menu>
+            </div>
+        </mat-toolbar>
+        <mat-sidenav [mode]="media.isActive('gt-sm')? 'side': 'over'" #sidenav [opened]="media.isActive('gt-sm')? true: false">
+            <div>
+              <app-side-bar></app-side-bar>
+            </div>
+        </mat-sidenav>
+        <div class="container content">
+          <router-outlet></router-outlet>
+        </div>
+  </mat-sidenav-container>
+</div>
