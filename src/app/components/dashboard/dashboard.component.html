@@ -15,33 +15,33 @@
                     <button *ngIf="item.children != null" [matMenuTriggerFor]="subMenu1" mat-button>
                       {{item.title}} <i class="material-icons">keyboard_arrow_down</i>
                     </button>
-                    <button *ngIf="item.children == null" mat-button>
+                    <button [routerLink]="item.url" *ngIf="item.children == null" mat-button>
                       {{item.title}}
                     </button>
                 </div>
-                <mat-menu #subMenu1="matMenu" [overlapTrigger]="false">
+                <mat-menu class="menu-item" #subMenu1="matMenu" [overlapTrigger]="false">
                   <div *ngFor="let child of item.children">
                     <button *ngIf="child.children != null" [matMenuTriggerFor]="subMenu2"  mat-menu-item>
-                      <mat-icon>account_circle</mat-icon>
+                      <mat-icon>{{child.icon}}</mat-icon>
                       <span>{{child.title}}</span>
                     </button>
-                    <button *ngIf="child.children == null" mat-menu-item>
-                      <mat-icon>account_circle</mat-icon>
+                    <button [routerLink]="child.url" *ngIf="child.children == null" mat-menu-item>
+                      <mat-icon>{{child.icon}}</mat-icon>
                       <span>{{child.title}}</span>
                     </button>
                     <mat-menu #subMenu2="matMenu" [overlapTrigger]="false">
                       <div *ngFor="let subChild of child.children">
-                        <button *ngIf="subChild.children != null" [matMenuTriggerFor]="subMenu3" mat-menu-item>
-                          <mat-icon>account_circle</mat-icon>
+                        <button [routerLink]="subChild.url" *ngIf="subChild.children != null" [matMenuTriggerFor]="subMenu3" mat-menu-item>
+                          <mat-icon>{{subChild.icon}}</mat-icon>
                           <span>{{subChild.title}}</span>
                         </button>
-                        <button *ngIf="subChild.children == null" mat-menu-item>
-                          <mat-icon>account_circle</mat-icon>
+                        <button  *ngIf="subChild.children == null" mat-menu-item>
+                          <mat-icon>{{subChild.icon}}</mat-icon>
                           <span>{{subChild.title}}</span>
                         </button>
                         <mat-menu #subMenu3="matMenu" [overlapTrigger]="false">
-                          <button *ngFor="let sub3 of subChild.children" mat-menu-item>
-                            <mat-icon>account_circle</mat-icon>
+                          <button [routerLink]="sub3.url" *ngFor="let sub3 of subChild.children" mat-menu-item>
+                            <mat-icon>{{sub3.icon}}</mat-icon>
                             <span>{{sub3.title}}</span>
                           </button>
                         </mat-menu>
@@ -53,7 +53,7 @@
             <span fxFlex></span>
             <div style="margin-right: 10px !important">
               <a *ngIf="auth.checkLogged()" class="name" [matMenuTriggerFor]="menu">
-                <img src="assets/img/logo.png" style="height: 45px; width:45px" class="img-circle image-border" alt="">
+                <img src="assets/img/logo.png" style="height: 45px; width:45px" class="rounded-circle image-border" alt="">
               </a>
   
               <mat-menu #menu="matMenu" [overlapTrigger]="false" class="my-menu menu">
@@ -96,7 +96,7 @@
               <app-side-bar></app-side-bar>
             </div>
         </mat-sidenav>
-        <div class="container content">
+        <div class="content">
           <router-outlet></router-outlet>
         </div>
   </mat-sidenav-container>

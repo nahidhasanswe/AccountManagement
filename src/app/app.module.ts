@@ -27,6 +27,21 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SidebarComponent } from './components/dashboard/sidebar/sidebar.component';
 import { SaleComponent } from './components/sale/sale.component';
+import { AddGroupComponent } from './components/Accounting/Creations/Group/add-group.component';
+import { LedgerComponent } from './components/Accounting/Creations/ledger/ledger.component';
+import { ChartOfAccountingComponent } from './components/Accounting/MIS/chart-of-accounting/chart-of-accounting.component';
+import { CreateMisComponent } from './components/Accounting/MIS/create-mis/create-mis.component';
+import { BalanceSheetComponent } from './components/Accounting/Report/balance-sheet/balance-sheet.component';
+import { IncomeStatmentComponent } from './components/Accounting/Report/income-statment/income-statment.component';
+import { LedgerBookComponent } from './components/Accounting/Report/ledger-book/ledger-book.component';
+import { PaymentReportComponent } from './components/Accounting/Report/payment-report/payment-report.component';
+import { TrialBalanceComponent } from './components/Accounting/Report/trial-balance/trial-balance.component';
+import { BankAccTypeComponent } from './components/Accounting/Settings/bank-acc-type/bank-acc-type.component';
+import { BankInfoComponent } from './components/Accounting/Settings/bank-info/bank-info.component';
+import { CompanyComponent } from './components/Accounting/Settings/company/company.component';
+import { JournalComponent } from './components/Accounting/Voucher/journal/journal.component';
+import { PaymentComponent } from './components/Accounting/Voucher/payment/payment.component';
+import { ReceiveComponent } from './components/Accounting/Voucher/receive/receive.component';
 
 
 export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions) {
@@ -39,7 +54,22 @@ export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions)
     LoginComponent,
     DashboardComponent,
     SidebarComponent,
-    SaleComponent
+    SaleComponent,
+    AddGroupComponent,
+    LedgerComponent,
+    ChartOfAccountingComponent,
+    CreateMisComponent,
+    BalanceSheetComponent,
+    IncomeStatmentComponent,
+    LedgerBookComponent,
+    PaymentReportComponent,
+    TrialBalanceComponent,
+    BankAccTypeComponent,
+    BankInfoComponent,
+    CompanyComponent,
+    JournalComponent,
+    PaymentComponent,
+    ReceiveComponent
   ],
   imports: [
     BrowserModule,

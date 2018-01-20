@@ -17,7 +17,7 @@
   .sidebar mat-sidenav {
     width: 280px !important;
     position: fixed;
-    background-color: rgb(255, 255, 255);
+    background-color: #222123;
     overflow-x: hidden;
     -webkit-box-shadow: 1px 1px 6px 0 rgba(0,0,0,0.3) ;
     box-shadow: 1px 1px 6px 0 rgba(0,0,0,0.3) ;
@@ -27,6 +27,7 @@
     width: 100%;
     overflow-x: hidden;
     background-color: white;
+    padding: 10px;
   }
   
   
@@ -69,6 +70,10 @@
   .menu {
     margin-top: 25px;
   }
+
+  .menu-item {
+    margin-top: 13px;
+  }
   
   .logo{
     padding: 25px 0 20px 0;
@@ -84,6 +89,10 @@
     position: absolute;
     top: 16px;
     left: 13px;
+  }
+
+  .mat-toolbar.mat-primary {
+    background-color:#343335;
   }
   
 @media only screen and (max-width: 768px) {

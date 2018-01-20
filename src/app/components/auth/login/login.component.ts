@@ -19,6 +19,9 @@ export class LoginComponent implements OnInit {
   public loginForm;
   public forgotPasswordForm;
   public registrationForm;
+  public isLogin = false;
+
+  public loginButton = 'Sign In';
 
   constructor(private authService: AuthService,private route: Router,
               private toast: ToastyService, private toastyConfig: ToastyConfig) {
@@ -41,7 +44,7 @@ export class LoginComponent implements OnInit {
 
   InitialLoginForm() {
     this.loginForm = new FormGroup({
-      Email : new FormControl('', [Validators.required, Validators.pattern('[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}')]),
+      UserName : new FormControl('', Validators.required),
       Password : new FormControl('', Validators.required),
     });
   }
@@ -72,7 +75,7 @@ export class LoginComponent implements OnInit {
       //   console.log('Email or password is incorrect');
       // });
 
-      if (formdata.Email === 'nahidh527@gmail.com' && formdata.Password === '123456') {
+      if (formdata.UserName === 'admin' && formdata.Password === '123456') {
           this.toast.success({timeout: 3000, title: 'Login Successful', msg: 'Welcome to dashboard' });
           this.authService.setToken();
           this.route.navigate(['/home']);

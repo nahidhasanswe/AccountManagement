@@ -4,6 +4,8 @@
     font-size: 18px;
     text-align: center;
     position: relative;
+    height: 64px;
+    background-color: #343335;
   }
   
   .logo img{
@@ -89,6 +91,7 @@
   .collapse-a{
     position: relative;
   }
+
   
   .collapse-a .caret{
     position: absolute;
@@ -126,13 +129,13 @@
 
 
   .menu-item > mat-list-item {
-    color: black;
+    color: rgb(250, 250, 250);
     font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
   }
 
   .menu-item > mat-list-item:hover {
     cursor: pointer;
-    background-color: rgba(82, 57, 223, 0.404);
+    background-color:  #434144;;
     color: white;
   }
