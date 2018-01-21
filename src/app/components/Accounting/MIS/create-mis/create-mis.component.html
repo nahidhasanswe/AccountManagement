@@ -3,3 +3,126 @@
   <li class="breadcrumb-item ">MIS</li>
   <li class="breadcrumb-item ">Create MIS</li>
 </ol>
+<div class="row">
+  <div class="col-md-4 col-lg-4 col-sm-12">
+    <form [formGroup]="misForm" #formDir="ngForm" (submit)="saveMIS(misForm.value, misForm.valid)">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <h5>MIS Name</h5>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="form-group">
+            <label for="">Name</label>
+            <input type="text" [ngClass]="{'has-error': misForm.controls['Name'].errors?.required && (misForm.controls['Name'].touched || isFormSubmitted)}"
+              formControlName="Name" class="form-control" placeholder="MIS Name">
+            <div class="error-text" *ngIf="misForm.controls['Name'].errors?.required && (misForm.controls['Name'].touched || isFormSubmitted )">
+              <strong>MIS Name</strong> is required</div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <div *ngIf="!isRequesting">
+            <span fxFlex></span>
+            <button type="button" mat-raised-button (click)="resetForm()">
+              <mat-icon>cancel</mat-icon> Cancel</button>
+            <button type="submit" mat-raised-button>
+              <mat-icon>save</mat-icon> Save</button>
+          </div>
+          <div *ngIf="isRequesting" fxLayout="row" fxLayoutAlign="center center">
+            <mat-progress-spinner diameter="50" mode="indeterminate">
+            </mat-progress-spinner>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+  <div class="col-md-8 col-lg-8 col-sm-12">
+    <mat-card style="height: 500px">
+      <mat-card-header>
+        <mat-card-title>
+          <h5> MIS Name List</h5>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div style="overflow: scroll;height: 350px">
+          <table class="table table-bordered table-hover table-condense">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <button type="button" color="accent" mat-mini-fab>
+            <mat-icon>keyboard_arrow_left</mat-icon>
+          </button>
+          <button type="button" style="margin-left: 5px" color="accent" mat-mini-fab>
+            <mat-icon>keyboard_arrow_right</mat-icon>
+          </button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

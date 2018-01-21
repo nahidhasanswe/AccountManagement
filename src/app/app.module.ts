@@ -42,6 +42,7 @@ import { CompanyComponent } from './components/Accounting/Settings/company/compa
 import { JournalComponent } from './components/Accounting/Voucher/journal/journal.component';
 import { PaymentComponent } from './components/Accounting/Voucher/payment/payment.component';
 import { ReceiveComponent } from './components/Accounting/Voucher/receive/receive.component';
+import { NotificationService } from './Services/notification.service';
 
 
 export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions) {
@@ -97,7 +98,7 @@ export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions)
     CustomFormsModule
 
   ],
-  providers: [AuthService,AuthGuard, {
+  providers: [AuthService,AuthGuard,NotificationService, {
     provide: HttpService,
     useFactory: httpFactory,
     deps: [XHRBackend, RequestOptions]

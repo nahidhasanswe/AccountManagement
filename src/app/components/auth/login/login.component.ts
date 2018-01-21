@@ -78,7 +78,7 @@ export class LoginComponent implements OnInit {
       if (formdata.UserName === 'admin' && formdata.Password === '123456') {
           this.toast.success({timeout: 3000, title: 'Login Successful', msg: 'Welcome to dashboard' });
           this.authService.setToken();
-          this.route.navigate(['/home']);
+          this.route.navigate(['/accounting/mis/chart-of-accounting']);
       }else {
         this.toast.error({timeout: 3000, title: 'Login Failed', msg: 'Email or password is incorrect' });
       }
